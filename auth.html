@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>身分驗證頁</title>
+
+	<!-- 引用 Bootstrap icons -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+
+  <script type="module" crossorigin src="/hs_25_hw_project/assets/main-B_zdnKyu.js"></script>
+  <link rel="stylesheet" crossorigin href="/hs_25_hw_project/assets/main-UWsL4rNd.css">
+</head>
+
+<body>
+	<!-- 引用 header.ejs (Embedded JavaScript Templates 語法)-->
+	<!-- 上方導覽列 -->
+<nav class="container py-16 d-flex justify-between align-center">
+	<!-- 左方元件 -->
+	<ul class="d-flex align-center">
+		<!-- logo 圖片 (連結到首頁) -->
+		<li>
+			<a href="index.html">
+				<img src="/hs_25_hw_project/assets/logo-Dkv_sa8q.svg" alt="logo 圖片">
+			</a>
+		</li>
+		<!-- 文字連結 -->
+		<li class="ml-48 tg-label">
+			<a href="product_list.html" class="py-12 neutral-900 td-none d-none-sm">商品列表
+			</a>
+		</li>
+		<li class="ml-40 tg-label">
+			<a href="story.html" class="py-12 neutral-900 td-none d-none-sm">品牌故事
+			</a>
+		</li>
+	</ul>
+
+	<!-- 右方元件 -->
+	<a href="auth.html" class="p-12"><i class="bi bi-person"></i></a>
+</nav>
+	<!-- 用 container 規範 12 格線分布範圍 -->
+	<div class="container">
+
+		<!-- 中區塊 1 -->
+		<div class="row justify-content-center py-5">
+			<div class="col-12 col-md-8 col-lg-6">
+				<div class="auth-container position-relative overflow-hidden rounded-3 shadow">
+
+					<!-- 表單切換按鈕 -->
+					<div class="auth-tabs d-flex mb-4">
+						<button class="btn btn-link flex-fill text-decoration-none auth-tab active" data-tab="login">
+							登入
+						</button>
+						<button class="btn btn-link flex-fill text-decoration-none auth-tab" data-tab="register">
+							註冊
+						</button>
+					</div>
+
+					<!-- 表單滑動容器 -->
+					<div class="auth-forms-wrapper">
+
+						<!-- 登入表單 -->
+						<div class="auth-form active" id="login-form">
+							<h3 class="text-center mb-4">會員登入</h3>
+							<form>
+								<div class="mb-3">
+									<label for="login-email" class="form-label">電子信箱</label>
+									<input type="email" class="form-control" id="login-email" required>
+								</div>
+								<div class="mb-3">
+									<label for="login-password" class="form-label">密碼</label>
+									<input type="password" class="form-control" id="login-password" required>
+								</div>
+								<div class="mb-3 form-check">
+									<input type="checkbox" class="form-check-input" id="remember-me">
+									<label class="form-check-label" for="remember-me">記住我</label>
+								</div>
+								<button type="submit" class="btn btn-primary w-100 mb-3">登入</button>
+								<div class="text-center">
+									<a href="#" class="text-decoration-none">忘記密碼？</a>
+								</div>
+							</form>
+						</div>
+
+						<!-- 註冊表單 -->
+						<div class="auth-form" id="register-form">
+							<h3 class="text-center mb-4">會員註冊</h3>
+							<form>
+								<div class="mb-3">
+									<label for="register-name" class="form-label">姓名</label>
+									<input type="text" class="form-control" id="register-name" required>
+								</div>
+								<div class="mb-3">
+									<label for="register-email" class="form-label">電子信箱</label>
+									<input type="email" class="form-control" id="register-email" required>
+								</div>
+								<div class="mb-3">
+									<label for="register-password" class="form-label">密碼</label>
+									<input type="password" class="form-control" id="register-password" required>
+								</div>
+								<div class="mb-3">
+									<label for="register-password-confirm" class="form-label">確認密碼</label>
+									<input type="password" class="form-control" id="register-password-confirm" required>
+								</div>
+								<div class="mb-3 form-check">
+									<input type="checkbox" class="form-check-input" id="agree-terms" required>
+									<label class="form-check-label" for="agree-terms">我同意服務條款與隱私政策</label>
+								</div>
+								<button type="submit" class="btn btn-primary w-100">註冊</button>
+							</form>
+						</div>
+
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+		<style>
+			.auth-container {
+				background: white;
+				padding: 2rem;
+			}
+
+			.auth-tabs {
+				border-bottom: 2px solid #dee2e6;
+			}
+
+			.auth-tab {
+				color: #6c757d;
+				border-bottom: 3px solid transparent;
+				padding: 0.75rem 0;
+				transition: all 0.3s;
+			}
+
+			.auth-tab.active {
+				color: var(--bs-primary);
+				border-bottom-color: var(--bs-primary);
+				font-weight: 600;
+			}
+
+			.auth-form {
+				display: none;
+			}
+
+			.auth-form.active {
+				display: block;
+			}
+		</style>
+
+		<script>
+			// 表單切換功能
+			document.addEventListener('DOMContentLoaded', function() {
+				const tabs = document.querySelectorAll('.auth-tab');
+				const loginForm = document.getElementById('login-form');
+				const registerForm = document.getElementById('register-form');
+
+				tabs.forEach(tab => {
+					tab.addEventListener('click', function() {
+						const targetTab = this.dataset.tab;
+						
+						// 更新按鈕狀態
+						tabs.forEach(t => t.classList.remove('active'));
+						this.classList.add('active');
+
+						// 切換表單
+						if (targetTab === 'register') {
+							loginForm.classList.remove('active');
+							registerForm.classList.add('active');
+						} else {
+							registerForm.classList.remove('active');
+							loginForm.classList.add('active');
+						}
+					});
+				});
+			});
+		</script>
+
+	</div>
+	<!-- Footer 區塊  -->	
+	<!-- 引用 footer.ejs -->
+		<!-- 表尾 -->
+	<footer class="footer footer-sm container">
+
+		<!-- nav -->
+		<ul class="d-flex align-center nav-sm">
+			<li class="mr-auto">
+				<a href="index.html">
+					<img src="/hs_25_hw_project/assets/logo-Dkv_sa8q.svg" alt="logo" />
+				</a>
+			</li>
+			<li class="mr-40 p-12-sm ">
+				<a href="product_list.html" class="tg-label td-none neutral-900">商品列表</a>
+			</li>
+			<li class="p-12-sm">
+				<a href="story.html" class="tg-label td-none neutral-900">品牌故事</a>
+			</li>
+		</ul>
+
+		<!-- 版權聲明 -->
+		<div class="mt-24 bt-gray-1px">
+			<div class="pt-32 copyright-text">
+				<p>Copyright ©2025 URBNSTYLE</p>
+				<p class="mt-4">All Rights Reserved.</p>
+			</div>
+		</div>
+
+	</footer>
+</body>
+
+</html>
