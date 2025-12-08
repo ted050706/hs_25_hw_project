@@ -1,3 +1,12 @@
+# 作業專題
+
+### 包含 index.html, product_list.html, product.html 等 RWD 頁面切版
+
+&nbsp;
+&nbsp;
+
+<hr style="width: 50%; margin: auto;">
+
 # 網頁切版直播班 Vite 範例
 
 ## Node.js 版本
