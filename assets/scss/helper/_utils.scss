@@ -123,6 +123,10 @@
 }
 
 /* 特殊文字樣式 */
+.clr-inherit {
+	color: inherit;
+}
+
 .copyright-text {
 	/* 引用自 tg-p-sm 樣式 */
   font-family: "Noto Sans TC", sans-serif;
@@ -457,6 +461,10 @@
 	/* 元素隱藏 */
 	.d-none-sm {
 		display: none;
+	}
+	/* 元素顯示 */
+	.d-inline-sm {
+		display:inline;
 	}
 }
 

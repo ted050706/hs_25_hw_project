@@ -36,7 +36,8 @@
 
 /* 按鈕:使用者行為 */
 .btn-customer-action {
-	width: calc((100%/2) - (8px)/2);
+	// width: calc((100%/2) - (8px)/2);
+	width: 49%;   //* 近50%
 	min-height: 48px;
 	border: 1px solid var(--neutral-900);
 }
@@ -97,7 +98,7 @@
 
 	/* 原子化設計 */
 	.btn-customer-action-md {
-		width: 295px;
+		// width: 50%;
 		height: auto;
   }
 
